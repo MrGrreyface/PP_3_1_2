@@ -12,17 +12,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/user")
+
 public class UserController {
 
     private final UserService userService;
+    private static final  String REDIRECT = "redirect:/";
 
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping("/list")
+    @GetMapping("/")
     public String listUsers(Model model) {
         List<User> users = userService.getAllUsers();
         model.addAttribute("users", users);
@@ -39,7 +40,7 @@ public class UserController {
     @PostMapping("/new")
     public String createUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
-        return "redirect:/user/list";
+        return REDIRECT;
     }
 
     @GetMapping("/edit/{id}")
@@ -52,7 +53,7 @@ public class UserController {
     @PostMapping("/edit/{id}")
     public String updateUser(@PathVariable("id") Long id, @ModelAttribute("user") User user) {
         userService.update(id, user);
-        return "redirect:/user/list";
+        return REDIRECT;
     }
 
     @GetMapping("/delete/{id}")
@@ -65,6 +66,6 @@ public class UserController {
     @PostMapping("/delete/{id}")
     public String deleteUserConfirm(@PathVariable("id") Long id) {
         userService.deleteUserById(id);
-        return "redirect:/user/list";
+        return REDIRECT;
     }
 }

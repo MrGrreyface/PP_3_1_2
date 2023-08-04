@@ -8,7 +8,7 @@
 <div class="center">
   <h2 th:if="${user.getId()}">Update User</h2>
   <h2 th:unless="${user.getId()}">Create User</h2>
-  <form th:method="POST" th:action="@{/user/new}" th:object="${user}">
+  <form th:method="POST" th:action="@{/new}" th:object="${user}">
     <input type="hidden" th:field="*{id}">
     <table class="tg new-edit">
       <tr>
@@ -28,7 +28,7 @@
       </tr>
     </table>
   </form>
-  <a href="/user/list">Back to List</a>
+  <a href="/">Back to List</a>
 </div>
 </body>
 </html>
