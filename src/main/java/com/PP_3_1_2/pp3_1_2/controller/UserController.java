@@ -2,7 +2,7 @@ package com.PP_3_1_2.pp3_1_2.controller;
 
 
 
-import com.PP_3_1_2.pp3_1_2.dao.UserService;
+import com.PP_3_1_2.pp3_1_2.service.UserService;
 import com.PP_3_1_2.pp3_1_2.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package com.PP_3_1_2.pp3_1_2.dao;
+package com.PP_3_1_2.pp3_1_2.service;
 
 
 import com.PP_3_1_2.pp3_1_2.model.User;

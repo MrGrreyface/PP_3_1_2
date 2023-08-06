@@ -1,4 +1,4 @@
-package com.PP_3_1_2.pp3_1_2.dao;
+package com.PP_3_1_2.pp3_1_2.service;
 
 import com.PP_3_1_2.pp3_1_2.model.User;
 import com.PP_3_1_2.pp3_1_2.repository.UserRepository;
@@ -11,7 +11,6 @@ import java.util.Optional;
 
 
 @Service
-@Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
     private final UserRepository repository;
 
@@ -21,12 +20,14 @@ public class UserServiceImpl implements UserService {
         super();
         this.repository = repository;
     }
-@Override
+
+    @Override
     public List<User> getAllUsers() {
         return (List<User>) repository.findAll();
     }
-@Override
-public User getUserById(Long id) {
+
+    @Override
+    public User getUserById(Long id) {
         Optional<User> foundPerson = repository.findById(id);
         return foundPerson.orElse(null);
     }
@@ -38,12 +39,14 @@ public User getUserById(Long id) {
     }
 
     @Transactional
+    @Override
     public void update(long id, User user) {
         user.setId(id);
         repository.save(user);
     }
 
     @Transactional
+    @Override
     public void deleteUserById(Long id) {
         repository.deleteById(id);
     }
